@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天窗口</title>
+    <script src="/js/chajian/jquery.js"></script>
+    <script src="/js/chat.js"></script>
+</head>
+<body>
+    我是谁，<input type="text" id="userId" /><input type="button" value="连接到服务器" id="linkServer"/><br/>
+    亲爱的：<input id="toUserId" type="text"><br/>
+
+    <textarea id="contentText" style="width: 220px; height: 70px;"></textarea><br/>
+    <input type="button" value="发送" id="submit" style="width: 200px; height: 40px;"/><br>
+    <div id="showMsgs">
+        <!-- 接受展示收到的消息 -->
+    </div>
+</body>
+</html>
