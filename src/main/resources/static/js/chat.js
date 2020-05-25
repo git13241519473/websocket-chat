@@ -81,4 +81,12 @@ $(function () {
             socket.send('{"toUserId":"'+ param.toUserId +'","contentText":"'+ param.contentText +'"}');
         }
     }
+
+    $("#closeMsgDiv").click(function(){
+        console.info("关闭消息弹窗");
+        $("#warningMsgDiv").hide();
+    });
+    setTimeout(function(){
+        $("#warningMsgDiv").hide();
+    }, 3000);
 });
