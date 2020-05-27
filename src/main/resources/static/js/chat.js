@@ -88,5 +88,7 @@ $(function () {
     });
     setTimeout(function(){
         $("#warningMsgDiv").hide();
-    }, 3000);
+    }, 5000);
+
+
 });
