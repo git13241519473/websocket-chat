@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("hello")
 public class HelloController {
-    @Autowired
+    /*@Autowired
     private RestTemplate restTemplate;
 
     @Bean
@@ -24,6 +24,6 @@ public class HelloController {
     @GetMapping("sayHello")
     public String sayHello(){
         return restTemplate.getForObject("http://eureka-client/hello/sayHello", String.class);
-    }
+    }*/
 
 }
