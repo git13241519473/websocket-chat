@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+//import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +18,12 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    RabbitTemplate rabbitTemplate;  //使用RabbitTemplate,这提供了接收/发送等等方法
-
     public static void main(String[] args) {
         System.out.println("hello world!");
     }
+
+    /*@Autowired
+    RabbitTemplate rabbitTemplate;  //使用RabbitTemplate,这提供了接收/发送等等方法
 
     @GetMapping("/sendMessage")
     @ResponseBody
@@ -37,6 +37,6 @@ public class UserController {
         manMap.put("createTime", createTime);
         rabbitTemplate.convertAndSend("topicExchange", "sync.user.add", manMap);
         return "ok!";
-    }
+    }*/
 
 }

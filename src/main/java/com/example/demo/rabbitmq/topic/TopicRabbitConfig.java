@@ -1,3 +1,4 @@
+/*
 package com.example.demo.rabbitmq.topic;
 
 import org.springframework.amqp.core.Binding;
@@ -35,3 +36,4 @@ public class TopicRabbitConfig {
         return BindingBuilder.bind(firstQueue()).to(exchange()).with(routerKey);
     }
 }
+*/
