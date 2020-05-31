@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +22,16 @@ public class PageController {
         return mav;
     }
     //跳转聊天页面： http://localhost:8080/page/to/chat
+
+    /**
+     * 跳转到首页页面
+     * @return
+     */
+    @GetMapping("index")
+    public ModelAndView toIndexPage(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("fontpage/index");
+        return mav;
+    }
 
 }

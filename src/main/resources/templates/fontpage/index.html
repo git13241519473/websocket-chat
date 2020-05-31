@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>welcome!</title>
+    <script src="/js/chajian/jquery.js"></script>
+    <script src="/js/fontpage/index.js"></script>
+    <style>
+        #selectUserDiv span{
+            margin-right: 30px;
+        }
+    </style>
 </head>
 <body>
+    <div style="width: 100%; height: 20%;" id="selectUserDiv">
+        <span>
+            <input type="checkbox" name="user" id="hanxin" value="hanxin"/><label for="hanxin">韩信</label>
+        </span>
+        <span>
+            <input type="checkbox" name="user" id="laohu" value="laohu"/><label for="laohu">老虎</label>
+        </span>
+        <span>
+            <input type="checkbox" name="user" id="nake" value="nake"/><label for="nake">娜可</label>
+        </span>
+        <span>
+            <input type="checkbox" name="user" id="xuance" value="xuance"/><label for="xuance">玄策</label>
+        </span>
+        <span>
+            <input type="checkbox" name="user" id="houzi" value="houzi"/><label for="houzi">猴子</label>
+        </span>
 
+        <span>
+            <input type="button" value="创建群聊" id="createRoom"/>
+        </span>
+    </div>
+    <div id="roomList" style="width: 100%;margin-top: 20px;">
+
+    </div>
 </body>
 </html>

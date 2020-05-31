@@ -2,6 +2,7 @@ package com.example.demo.websocket;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.websocket.*;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author zhengkai.blog.csdn.net
+ * 一对一聊天
  */
 @ServerEndpoint(value = "/imserver/{userId}", encoders = {MyEncode.class})
 @Component
@@ -30,7 +31,7 @@ public class WebSocketServer {
     public static AtomicInteger onlineCount = new AtomicInteger(0);
 
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
-    private static ConcurrentHashMap<String, WebSocketServer> webSocketMap = new ConcurrentHashMap<>();
+    private static Map<String, WebSocketServer> webSocketMap = new ConcurrentHashMap<>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
