@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashSet;
 
 @RestController
 @RequestMapping("/page")
@@ -34,4 +37,17 @@ public class PageController {
         return mav;
     }
 
+    /**
+     * 跳转到群聊页面
+     * @return
+     */
+    @GetMapping("roomChat")
+    public ModelAndView toRoomChatPage(String roomId){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("roomId", roomId);
+        HashSet<User> users = UserController.room.get(roomId);
+        mav.addObject("users", users);
+        mav.setViewName("roomChat");
+        return mav;
+    }
 }

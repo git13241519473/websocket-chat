@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 //import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ import java.util.*;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    private UserService userService;
 
     public static void main(String[] args) {
         System.out.println("hello world!");
@@ -39,16 +44,16 @@ public class UserController {
     }*/
 
     //创建房间
-    public static Map<String, HashSet<String>> room = new HashMap<>();
+    public static Map<String, HashSet<User>> room = new HashMap<>();
 
     @GetMapping("createRoom")
     @ResponseBody
     public Map createRoom(String userIds){
         if(StringUtils.isNotBlank(userIds)){
             String ids[] = StringUtils.split(userIds, ",");
-            HashSet<String> set = new HashSet<>();
+            HashSet<User> set = new HashSet<>();
             for(String id: ids){
-                set.add(id);
+                set.add(userService.getUserById(id));
             }
             String roomId = "room" + new Date().getTime();
             room.put(roomId, set);

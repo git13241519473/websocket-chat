@@ -24,6 +24,6 @@ $(function(){
 
     roomChat = function (roomId) {
         console.info(roomId);
-        window.location.href = "/page/to/roomChat";
+        window.location.href = "/page/roomChat?roomId=" + roomId;
     }
 });

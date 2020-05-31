@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 /**
  * 一对一聊天
  */
-@ServerEndpoint(value = "/imserver/{userId}", encoders = {MyEncode.class})
+@ServerEndpoint(value = "/imserver/{userId}")
 @Component
 public class WebSocketServer {
     public static Logger log = LoggerFactory.getLogger(WebSocketServer.class);
@@ -125,8 +125,8 @@ public class WebSocketServer {
      */
     public void sendMessage(Message message) throws IOException {
         try {
-            this.session.getBasicRemote().sendObject(message);
-        } catch (EncodeException e) {
+            this.session.getBasicRemote().sendText(JSONObject.toJSONString(message));
+        } catch (Exception e) {
             log.error("发送消息异常。。。{}", message);
             e.printStackTrace();
         }
@@ -143,17 +143,17 @@ public class WebSocketServer {
         return msgObj;
     }
 
-    public static synchronized int getOnlineCount() {
+    public static int getOnlineCount() {
         return onlineCount.get();
     }
 
     //当前在线人数加1
-    public static synchronized void addOnlineCount() {
+    public static void addOnlineCount() {
         onlineCount.getAndIncrement();
     }
 
     //当前在线人数减1
-    public static synchronized void subOnlineCount() {
+    public static void subOnlineCount() {
         onlineCount.getAndDecrement();
     }
 }
