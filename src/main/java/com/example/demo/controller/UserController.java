@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 //import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -32,14 +33,17 @@ public class UserController {
     @GetMapping("/sendMessage")
     @ResponseBody
     public String sendMessage(){
-        String messageId = String.valueOf(UUID.randomUUID());
-        String messageData = "message: M A N ";
-        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        Map<String, Object> manMap = new HashMap<>();
-        manMap.put("messageId", messageId);
-        manMap.put("messageData", messageData);
-        manMap.put("createTime", createTime);
-        rabbitTemplate.convertAndSend("topicExchange", "sync.user.add", manMap);
+        User user = new User();
+        user.setId("15344556677");
+        user.setEmail("15344556677@qq.com");
+        user.setRealname("自然资源部");
+        user.setSex("1");
+        user.setTelPhone("15344556677");
+        user.setUsername("admin-zrzyb");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("data", user);
+        jsonObject.put("changeType", "1");
+        rabbitTemplate.convertAndSend("topicExchange", "sync.user.add", jsonObject.toJSONString());
         return "ok!";
     }*/
 
